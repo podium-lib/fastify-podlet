@@ -19,11 +19,7 @@ podlet.defaults({
     locale: 'nb-NO',
 });
 
-
-// const fastifyPodlet = new FastifyPodlet();
-
 app.register(FastifyPodlet, podlet);
-
 
 app.get(podlet.content(), async (request, reply) => {
     if (reply.app.podium.context.locale === 'nb-NO') {
@@ -38,15 +34,17 @@ app.get(podlet.fallback(), async (request, reply) => {
 });
 
 app.get(podlet.manifest(), async (request, reply) => {
-    // console.log(reply.app.podium);
     reply.send(podlet);
+});
+
+app.get('/public', async (request, reply) => {
+  reply.send({ say: 'Hello world' });
 });
 
 // Test URL: http://localhost:7100/podium-resource/podletContent/localApi
 podlet.proxy({ target: '/public', name: 'localApi' });
 // Test URL: http://localhost:7100/podium-resource/podletContent/remoteApi
 podlet.proxy({ target: 'https://api.ipify.org', name: 'remoteApi' });
-
 
 // Run the server!
 const start = async () => {
