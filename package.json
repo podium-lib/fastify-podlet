@@ -1,0 +1,32 @@
+{
+  "name": "@podium/fastify-podlet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/podlet-plugin.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "tap test/*.js",
+    "test:coverage": "tap test/*.js --cov",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "fastify-plugin": "^1.5.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-import": "^2.17.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "prettier": "^1.17.0",
+    "tap": "^12.6.1",
+    "@podium/podlet": "3.0.3",
+    "@podium/utils": "3.1.2",
+    "fastify": "^2.2.0"
+  }
+}
