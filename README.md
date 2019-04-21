@@ -4,7 +4,8 @@ Fastify plugin for @podium/podlet.
 
 [![Dependencies](https://img.shields.io/david/podium-lib/fastify-podlet.svg?style=flat-square)](https://david-dm.org/podium-lib/fastify-podlet)
 [![Build Status](https://travis-ci.org/podium-lib/fastify-podlet.svg?branch=master&style=flat-square)](https://travis-ci.org/podium-lib/fastify-podlet)
-[![Known Vulnerabilities](https://snyk.io/test/github/podium-lib/fastify-podlet/badge.svg?style=flat-square)](https://snyk.io/test/github/podium-lib/fastify-podlet) [![Greenkeeper badge](https://badges.greenkeeper.io/podium-lib/fastify-podlet.svg)](https://greenkeeper.io/)
+[![Known Vulnerabilities](https://snyk.io/test/github/podium-lib/fastify-podlet/badge.svg?style=flat-square)](https://snyk.io/test/github/podium-lib/fastify-podlet)
+[![Greenkeeper badge](https://badges.greenkeeper.io/podium-lib/fastify-podlet.svg?style=flat-square)](https://greenkeeper.io/)
 
 Module for building [@podium/podlet] servers with [fastify]. For writing podlets,
 please see the [Podium documentation].
