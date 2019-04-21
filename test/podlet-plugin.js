@@ -75,28 +75,59 @@ class Server {
     }
 }
 
-const get = (address = '', pathname = '/') => {
+const request = ({
+    pathname = '/',
+    address = '',
+    headers = {},
+    method = 'GET',
+} = {}, payload) => {
     return new Promise((resolve, reject) => {
         const url = new URL(pathname, address);
-        http.get(url, res => {
+
+        if (method === 'POST' || method === 'PUT' || method === 'DELETE') {
+            headers = Object.assign(headers, {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Content-Length': Buffer.byteLength(payload),
+            });
+        }
+
+        const options = {
+            hostname: url.hostname,
+            port: url.port,
+            path: url.pathname,
+            headers,
+            method,
+        };
+
+        const req = http.request(options, res => {
             const chunks = [];
             res.on('data', chunk => {
                 chunks.push(chunk);
             });
             res.on('end', () => {
-                resolve(chunks.join(''));
+                resolve({
+                    headers: res.headers,
+                    body: chunks.join(''),
+                });
             });
-        }).on('error', error => {
+        })
+        .on('error', error => {
             reject(error);
         });
+
+        if (method === 'POST' || method === 'PUT' || method === 'DELETE') {
+            req.write(payload);
+        }
+
+        req.end();
     });
 }
 
 tap.test('request "manifest" url - should return content of "manifest" url', async (t) => {
     const server = new Server();
     const address = await server.listen();
-    const result = await get(address, '/manifest.json');
-    const parsed = JSON.parse(result);
+    const result = await request({ address, pathname: '/manifest.json' });
+    const parsed = JSON.parse(result.body);
 
     t.equal(parsed.version, '2.0.0');
     t.equal(parsed.fallback, '/fallback');
@@ -110,9 +141,9 @@ tap.test('request "manifest" url - should return content of "manifest" url', asy
 tap.test('request "content" url - development: false - should return default content of "content" url', async (t) => {
     const server = new Server({ development: false });
     const address = await server.listen();
-    const result = await get(address);
+    const result = await request({ address });
 
-    t.equal(result, 'en-US');
+    t.equal(result.body, 'en-US');
 
     await server.close();
     t.end();
@@ -121,20 +152,75 @@ tap.test('request "content" url - development: false - should return default con
 tap.test('request "content" url - development: true - should return context aware content of "content" url', async (t) => {
     const server = new Server({ development: true });
     const address = await server.listen();
-    const result = await get(address);
+    const result = await request({ address });
 
-    t.equal(result, '## nb-NO ##');
+    t.equal(result.body, '## nb-NO ##');
 
     await server.close();
     t.end();
 });
 
-tap.test('request "fallback" url - should return content of "fallback" url', async (t) => {
+tap.test('request "content" url - development: true - should return development mode decorated content of "content" url', async (t) => {
+    const server = new Server({ development: true });
+    const address = await server.listen();
+    const result = await request({ address });
+
+    t.equal(result.body, '## nb-NO ##');
+
+    await server.close();
+    t.end();
+});
+
+tap.test('request "fallback" url - development: false - should return content of "fallback" url', async (t) => {
     const server = new Server();
     const address = await server.listen();
-    const result = await get(address, '/fallback');
+    const result = await request({ address, pathname: '/fallback' });
 
-    t.equal(result, 'fallback');
+    t.equal(result.body, 'fallback');
+
+    await server.close();
+    t.end();
+});
+
+tap.test('request "fallback" url - development: false - should return development mode decorated content of "fallback" url', async (t) => {
+    const server = new Server({ development: true });
+    const address = await server.listen();
+    const result = await request({ address, pathname: '/fallback' });
+
+    t.equal(result.body, '## fallback ##');
+
+    await server.close();
+    t.end();
+});
+
+tap.test('request "manifest" url - should have version header', async (t) => {
+    const server = new Server();
+    const address = await server.listen();
+    const result = await request({ address, pathname: '/manifest.json' });
+
+    t.equal(result.headers['podlet-version'], '2.0.0');
+
+    await server.close();
+    t.end();
+});
+
+tap.test('request "content" url - should have version header', async (t) => {
+    const server = new Server();
+    const address = await server.listen();
+    const result = await request({ address });
+
+    t.equal(result.headers['podlet-version'], '2.0.0');
+
+    await server.close();
+    t.end();
+});
+
+tap.test('request "fallback" url - should have version header', async (t) => {
+    const server = new Server();
+    const address = await server.listen();
+    const result = await request({ address, pathname: '/fallback' });
+
+    t.equal(result.headers['podlet-version'], '2.0.0');
 
     await server.close();
     t.end();
