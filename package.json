@@ -15,8 +15,8 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "fastify-plugin": "^1.5.0",
-    "@podium/utils": "3.1.2"
+    "@podium/utils": "3.1.2",
+    "fastify-plugin": "^1.5.0"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
@@ -27,6 +27,7 @@
     "prettier": "^1.17.0",
     "tap": "^12.6.1",
     "@podium/podlet": "3.0.3",
+    "fastify-formbody": "^3.1.0",
     "fastify": "^2.2.0"
   }
 }

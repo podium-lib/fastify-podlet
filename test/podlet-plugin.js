@@ -1,8 +1,9 @@
 'use strict';
 
+const fastifyForm = require('fastify-formbody');
 const fastify = require('fastify');
-const Podlet = require('@podium/podlet');
 const { URL } = require('url');
+const Podlet = require('@podium/podlet');
 const http = require('http');
 const tap = require('tap');
 const FastifyPodlet = require('../');
@@ -32,10 +33,15 @@ class Server {
         });
 
         this.app.register(FastifyPodlet, podlet);
+        this.app.register(fastifyForm); // Needed to handle non GET requests
 
         this.app.get(podlet.content(), async (request, reply) => {
             if (reply.app.podium.context.locale === 'nb-NO') {
                 reply.podiumSend('nb-NO');
+                return;
+            }
+            if (reply.app.podium.context.locale === 'en-NZ') {
+                reply.podiumSend('en-NZ');
                 return;
             }
             reply.podiumSend('en-US');
@@ -49,14 +55,21 @@ class Server {
             reply.send(podlet);
         });
 
+        // Dummy endpoints for proxying
         this.app.get('/public', async (request, reply) => {
-            reply.send({ proxy: true });
+            reply.send('GET proxy target');
         });
 
-        // Test URL: http://localhost:7100/podium-resource/podletContent/localApi
+        this.app.post('/public', async (request, reply) => {
+            reply.send('POST proxy target');
+        });
+
+        this.app.put('/public', async (request, reply) => {
+            reply.send('PUT proxy target');
+        });
+
+        // Proxy to the dummy endpoints
         podlet.proxy({ target: '/public', name: 'localApi' });
-        // Test URL: http://localhost:7100/podium-resource/podletContent/remoteApi
-        podlet.proxy({ target: 'https://api.ipify.org', name: 'remoteApi' });
     }
 
     listen() {
@@ -250,3 +263,115 @@ tap.test('request "fallback" url - should have version header', async t => {
     await server.close();
     t.end();
 });
+
+tap.test(
+    'request "content" url - set a context parameter - should alter content of "content" url based on context',
+    async t => {
+        const server = new Server();
+        const address = await server.listen();
+        const result = await request({
+            address,
+            headers: {
+                'podium-locale': 'en-NZ',
+            },
+        });
+
+        t.equal(result.body, 'en-NZ');
+
+        await server.close();
+        t.end();
+    },
+);
+
+tap.test(
+    'GET "proxy" url - development: false - should not proxy content',
+    async t => {
+        const server = new Server();
+        const address = await server.listen();
+        const result = await request({
+            address,
+            pathname: '/podium-resource/podletContent/localApi',
+        });
+
+        t.equal(result.body, 'Not found');
+
+        await server.close();
+        t.end();
+    },
+);
+
+tap.test(
+    'GET "proxy" url - development: true - should proxy content',
+    async t => {
+        const server = new Server({ development: true });
+        const address = await server.listen();
+        const result = await request({
+            address,
+            pathname: '/podium-resource/podletContent/localApi',
+        });
+
+        t.equal(result.body, 'GET proxy target');
+
+        await server.close();
+        t.end();
+    },
+);
+
+tap.test(
+    'GET "proxy" url - development: true - should have version header',
+    async t => {
+        const server = new Server({ development: true });
+        const address = await server.listen();
+        const result = await request({
+            address,
+            pathname: '/podium-resource/podletContent/localApi',
+        });
+
+        t.equal(result.headers['podlet-version'], '2.0.0');
+
+        await server.close();
+        t.end();
+    },
+);
+
+tap.test(
+    'POST to "proxy" url - development: true - should proxy content',
+    async t => {
+        const server = new Server({ development: true });
+        const address = await server.listen();
+        const result = await request(
+            {
+                address,
+                method: 'POST',
+                pathname: '/podium-resource/podletContent/localApi',
+            },
+            'payload',
+        );
+
+        t.equal(result.body, 'POST proxy target');
+
+        await server.close();
+        t.end();
+    },
+);
+
+tap.test(
+    'PUT to "proxy" url - development: true - should proxy content',
+    async t => {
+        const server = new Server({ development: true });
+        const address = await server.listen();
+        const result = await request(
+            {
+                address,
+                method: 'PUT',
+                pathname: '/podium-resource/podletContent/localApi',
+            },
+            'payload',
+        );
+
+        t.equal(result.body, 'PUT proxy target');
+
+        await server.close();
+        t.end();
+    },
+);
