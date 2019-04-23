@@ -1,19 +1,34 @@
 {
   "name": "@podium/fastify-podlet",
   "version": "1.0.0",
-  "description": "",
+  "description": "Fastify plugin for Podium Podlet",
   "main": "lib/podlet-plugin.js",
-  "directories": {
-    "lib": "lib"
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:podium-lib/fastify-podlet.git"
   },
+  "bugs": {
+    "url": "https://github.com/podium-lib/issues"
+  },
+  "homepage": "https://podium-lib.io/",
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "test": "tap test/*.js",
     "test:coverage": "tap test/*.js --cov",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
-  "author": "",
+  "author": "Trygve Lie",
   "license": "MIT",
+  "keywords": [
+    "micro services",
+    "micro frontend",
+    "components",
+    "fastify",
+    "podium"
+  ],
   "dependencies": {
     "@podium/utils": "3.1.2",
     "fastify-plugin": "^1.5.0"
