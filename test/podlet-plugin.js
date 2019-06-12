@@ -26,7 +26,7 @@ class Server {
             ),
         );
 
-        podlet.view(fragment => {
+        podlet.view((incoming, fragment) => {
             return `## ${fragment} ##`;
         });
 
