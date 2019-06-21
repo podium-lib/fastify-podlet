@@ -3,10 +3,9 @@
 'use strict';
 
 const fastifyForm = require('fastify-formbody');
+const { request } = require('@podium/test-utils');
 const fastify = require('fastify');
-const { URL } = require('url');
 const Podlet = require('@podium/podlet');
-const http = require('http');
 const tap = require('tap');
 const FastifyPodlet = require('../');
 
@@ -37,7 +36,7 @@ class Server {
         this.app.register(FastifyPodlet, podlet);
         this.app.register(fastifyForm); // Needed to handle non GET requests
 
-        this.app.get(podlet.content(), async (request, reply) => {
+        this.app.get(podlet.content(), async (req, reply) => {
             if (reply.app.podium.context.locale === 'nb-NO') {
                 reply.podiumSend('nb-NO');
                 return;
@@ -49,24 +48,24 @@ class Server {
             reply.podiumSend('en-US');
         });
 
-        this.app.get(podlet.fallback(), async (request, reply) => {
+        this.app.get(podlet.fallback(), async (req, reply) => {
             reply.podiumSend('fallback');
         });
 
-        this.app.get(podlet.manifest(), async (request, reply) => {
+        this.app.get(podlet.manifest(), async (req, reply) => {
             reply.send(podlet);
         });
 
         // Dummy endpoints for proxying
-        this.app.get('/public', async (request, reply) => {
+        this.app.get('/public', async (req, reply) => {
             reply.send('GET proxy target');
         });
 
-        this.app.post('/public', async (request, reply) => {
+        this.app.post('/public', async (req, reply) => {
             reply.send('POST proxy target');
         });
 
-        this.app.put('/public', async (request, reply) => {
+        this.app.put('/public', async (req, reply) => {
             reply.send('PUT proxy target');
         });
 
@@ -97,53 +96,6 @@ class Server {
         });
     }
 }
-
-const request = (
-    { pathname = '/', address = '', headers = {}, method = 'GET' } = {},
-    payload,
-) => {
-    return new Promise((resolve, reject) => {
-        const url = new URL(pathname, address);
-
-        if (method === 'POST' || method === 'PUT' || method === 'DELETE') {
-            headers = Object.assign(headers, {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'Content-Length': Buffer.byteLength(payload),
-            });
-        }
-
-        const options = {
-            hostname: url.hostname,
-            port: url.port,
-            path: url.pathname,
-            headers,
-            method,
-        };
-
-        const req = http
-            .request(options, res => {
-                const chunks = [];
-                res.on('data', chunk => {
-                    chunks.push(chunk);
-                });
-                res.on('end', () => {
-                    resolve({
-                        headers: res.headers,
-                        body: chunks.join(''),
-                    });
-                });
-            })
-            .on('error', error => {
-                reject(error);
-            });
-
-        if (method === 'POST' || method === 'PUT' || method === 'DELETE') {
-            req.write(payload);
-        }
-
-        req.end();
-    });
-};
 
 tap.test(
     'request "manifest" url - should return content of "manifest" url',
