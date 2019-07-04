@@ -30,7 +30,7 @@
     "podium"
   ],
   "dependencies": {
-    "@podium/utils": "4.0.0",
+    "@podium/utils": "4.0.1",
     "fastify-plugin": "^1.5.0"
   },
   "devDependencies": {
