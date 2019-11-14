@@ -34,7 +34,7 @@
     "fastify-plugin": "^1.5.0"
   },
   "devDependencies": {
-    "@podium/podlet": "4.2.3",
+    "@podium/podlet": "4.2.4",
     "@podium/test-utils": "2.0.0",
     "eslint": "^6.0.0",
     "eslint-config-airbnb-base": "^14.0.0",
