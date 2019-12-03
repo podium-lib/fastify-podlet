@@ -13,17 +13,13 @@ class Server {
     constructor(options = {}) {
         this.app = fastify();
 
-        const podlet = new Podlet(
-            Object.assign(
-                {
-                    pathname: '/',
-                    fallback: '/fallback',
-                    version: '2.0.0',
-                    name: 'podletContent',
-                },
-                options,
-            ),
-        );
+        const podlet = new Podlet({
+            pathname: '/',
+            fallback: '/fallback',
+            version: '2.0.0',
+            name: 'podletContent',
+            ...options,
+        });
 
         podlet.view((incoming, fragment) => {
             return `## ${fragment} ##`;
