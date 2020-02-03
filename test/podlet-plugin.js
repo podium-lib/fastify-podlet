@@ -10,7 +10,7 @@ const tap = require('tap');
 const FastifyPodlet = require('../');
 
 class Server {
-    constructor(options = {}) {
+    constructor({ podletOptions = {}, pluginOptions = {} } = {}) {
         this.app = fastify();
 
         const podlet = new Podlet({
@@ -18,7 +18,7 @@ class Server {
             fallback: '/fallback',
             version: '2.0.0',
             name: 'podletContent',
-            ...options,
+            ...podletOptions,
         });
 
         podlet.view((incoming, fragment) => {
@@ -29,7 +29,7 @@ class Server {
             locale: 'nb-NO',
         });
 
-        this.app.register(FastifyPodlet, podlet);
+        this.app.register(FastifyPodlet, { podlet, ...pluginOptions });
         this.app.register(fastifyForm); // Needed to handle non GET requests
 
         this.app.get(podlet.content(), async (req, reply) => {
@@ -114,7 +114,7 @@ tap.test(
 tap.test(
     'request "content" url - development: false - should return default content of "content" url',
     async t => {
-        const server = new Server({ development: false });
+        const server = new Server({ podletOptions: { development: false } });
         const address = await server.listen();
         const result = await request({ address });
 
@@ -128,7 +128,7 @@ tap.test(
 tap.test(
     'request "content" url - development: true - should return context aware content of "content" url',
     async t => {
-        const server = new Server({ development: true });
+        const server = new Server({ podletOptions: { development: true } });
         const address = await server.listen();
         const result = await request({ address });
 
@@ -142,7 +142,7 @@ tap.test(
 tap.test(
     'request "content" url - development: true - should return development mode decorated content of "content" url',
     async t => {
-        const server = new Server({ development: true });
+        const server = new Server({ podletOptions: { development: true } });
         const address = await server.listen();
         const result = await request({ address });
 
@@ -170,7 +170,7 @@ tap.test(
 tap.test(
     'request "fallback" url - development: false - should return development mode decorated content of "fallback" url',
     async t => {
-        const server = new Server({ development: true });
+        const server = new Server({ podletOptions: { development: true } });
         const address = await server.listen();
         const result = await request({ address, pathname: '/fallback' });
 
@@ -253,7 +253,7 @@ tap.test(
 tap.test(
     'GET "proxy" url - development: true - should proxy content',
     async t => {
-        const server = new Server({ development: true });
+        const server = new Server({ podletOptions: { development: true } });
         const address = await server.listen();
         const result = await request({
             address,
@@ -270,7 +270,7 @@ tap.test(
 tap.test(
     'GET "proxy" url - development: true - should have version header',
     async t => {
-        const server = new Server({ development: true });
+        const server = new Server({ podletOptions: { development: true } });
         const address = await server.listen();
         const result = await request({
             address,
@@ -287,7 +287,7 @@ tap.test(
 tap.test(
     'POST to "proxy" url - development: true - should proxy content',
     async t => {
-        const server = new Server({ development: true });
+        const server = new Server({ podletOptions: { development: true } });
         const address = await server.listen();
         const result = await request(
             {
@@ -308,7 +308,7 @@ tap.test(
 tap.test(
     'PUT to "proxy" url - development: true - should proxy content',
     async t => {
-        const server = new Server({ development: true });
+        const server = new Server({ podletOptions: { development: true } });
         const address = await server.listen();
         const result = await request(
             {
@@ -325,3 +325,43 @@ tap.test(
         t.end();
     },
 );
+
+tap.test('Enable dev tool', async t => {
+    const server = new Server({
+        podletOptions: { development: true },
+        pluginOptions: {
+            devTool: { enabled: true, port: 6543 },
+        },
+    });
+    await server.listen();
+    const result = await request({
+        address: `http://localhost:6543`,
+        pathname: '/',
+        json: true,
+    });
+
+    t.same(result.body, { version: '4.0.0', enabled: true });
+
+    await server.close();
+    t.end();
+});
+
+tap.test('Disabled dev tool', async t => {
+    const server = new Server({
+        podletOptions: { development: true },
+        pluginOptions: {
+            devTool: { enabled: false, port: 6543 },
+        },
+    });
+    await server.listen();
+    const result = await request({
+        address: `http://localhost:6543`,
+        pathname: '/',
+        json: true,
+    });
+
+    t.same(result.body, { version: '4.0.0', enabled: false });
+
+    await server.close();
+    t.end();
+});
