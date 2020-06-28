@@ -78,14 +78,14 @@ class Server {
                     const url = `http://${address.address}:${address.port}`;
                     resolve(url);
                 })
-                .catch(error => {
+                .catch((error) => {
                     reject(error);
                 });
         });
     }
 
     close() {
-        return new Promise(resolve => {
+        return new Promise((resolve) => {
             this.app.close(() => {
                 resolve();
             });
@@ -95,7 +95,7 @@ class Server {
 
 tap.test(
     'request "manifest" url - should return content of "manifest" url',
-    async t => {
+    async (t) => {
         const server = new Server();
         const address = await server.listen();
         const result = await request({ address, pathname: '/manifest.json' });
@@ -113,7 +113,7 @@ tap.test(
 
 tap.test(
     'request "content" url - development: false - should return default content of "content" url',
-    async t => {
+    async (t) => {
         const server = new Server({ development: false });
         const address = await server.listen();
         const result = await request({ address });
@@ -127,7 +127,7 @@ tap.test(
 
 tap.test(
     'request "content" url - development: true - should return context aware content of "content" url',
-    async t => {
+    async (t) => {
         const server = new Server({ development: true });
         const address = await server.listen();
         const result = await request({ address });
@@ -141,7 +141,7 @@ tap.test(
 
 tap.test(
     'request "content" url - development: true - should return development mode decorated content of "content" url',
-    async t => {
+    async (t) => {
         const server = new Server({ development: true });
         const address = await server.listen();
         const result = await request({ address });
@@ -155,7 +155,7 @@ tap.test(
 
 tap.test(
     'request "fallback" url - development: false - should return content of "fallback" url',
-    async t => {
+    async (t) => {
         const server = new Server();
         const address = await server.listen();
         const result = await request({ address, pathname: '/fallback' });
@@ -169,7 +169,7 @@ tap.test(
 
 tap.test(
     'request "fallback" url - development: false - should return development mode decorated content of "fallback" url',
-    async t => {
+    async (t) => {
         const server = new Server({ development: true });
         const address = await server.listen();
         const result = await request({ address, pathname: '/fallback' });
@@ -181,7 +181,7 @@ tap.test(
     },
 );
 
-tap.test('request "manifest" url - should have version header', async t => {
+tap.test('request "manifest" url - should have version header', async (t) => {
     const server = new Server();
     const address = await server.listen();
     const result = await request({ address, pathname: '/manifest.json' });
@@ -192,7 +192,7 @@ tap.test('request "manifest" url - should have version header', async t => {
     t.end();
 });
 
-tap.test('request "content" url - should have version header', async t => {
+tap.test('request "content" url - should have version header', async (t) => {
     const server = new Server();
     const address = await server.listen();
     const result = await request({ address });
@@ -203,7 +203,7 @@ tap.test('request "content" url - should have version header', async t => {
     t.end();
 });
 
-tap.test('request "fallback" url - should have version header', async t => {
+tap.test('request "fallback" url - should have version header', async (t) => {
     const server = new Server();
     const address = await server.listen();
     const result = await request({ address, pathname: '/fallback' });
@@ -216,7 +216,7 @@ tap.test('request "fallback" url - should have version header', async t => {
 
 tap.test(
     'request "content" url - set a context parameter - should alter content of "content" url based on context',
-    async t => {
+    async (t) => {
         const server = new Server();
         const address = await server.listen();
         const result = await request({
@@ -235,7 +235,7 @@ tap.test(
 
 tap.test(
     'GET "proxy" url - development: false - should not proxy content',
-    async t => {
+    async (t) => {
         const server = new Server();
         const address = await server.listen();
         const result = await request({
@@ -252,7 +252,7 @@ tap.test(
 
 tap.test(
     'GET "proxy" url - development: true - should proxy content',
-    async t => {
+    async (t) => {
         const server = new Server({ development: true });
         const address = await server.listen();
         const result = await request({
@@ -269,7 +269,7 @@ tap.test(
 
 tap.test(
     'GET "proxy" url - development: true - should have version header',
-    async t => {
+    async (t) => {
         const server = new Server({ development: true });
         const address = await server.listen();
         const result = await request({
@@ -286,7 +286,7 @@ tap.test(
 
 tap.test(
     'POST to "proxy" url - development: true - should proxy content',
-    async t => {
+    async (t) => {
         const server = new Server({ development: true });
         const address = await server.listen();
         const result = await request(
@@ -307,7 +307,7 @@ tap.test(
 
 tap.test(
     'PUT to "proxy" url - development: true - should proxy content',
-    async t => {
+    async (t) => {
         const server = new Server({ development: true });
         const address = await server.listen();
         const result = await request(
