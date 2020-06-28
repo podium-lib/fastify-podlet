@@ -7,7 +7,7 @@ const { request } = require('@podium/test-utils');
 const fastify = require('fastify');
 const Podlet = require('@podium/podlet');
 const tap = require('tap');
-const FastifyPodlet = require('../');
+const FastifyPodlet = require('..');
 
 class Server {
     constructor(options = {}) {
