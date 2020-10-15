@@ -35,7 +35,7 @@
   ],
   "dependencies": {
     "@podium/utils": "4.4.0",
-    "fastify-plugin": "^2.0.0"
+    "fastify-plugin": "^3.0.0"
   },
   "devDependencies": {
     "@semantic-release/changelog": "5.0.1",
