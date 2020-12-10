@@ -21,9 +21,7 @@ class Server {
             ...options,
         });
 
-        podlet.view((incoming, fragment) => {
-            return `## ${fragment} ##`;
-        });
+        podlet.view((incoming, fragment) => `## ${fragment} ##`);
 
         podlet.defaults({
             locale: 'nb-NO',
