@@ -1,3 +1,10 @@
+## [2.2.6](https://github.com/podium-lib/fastify-podlet/compare/v2.2.5...v2.2.6) (2020-12-11)
+
+
+### Bug Fixes
+
+* Move Podium processing to a preHandler hook ([d785eda](https://github.com/podium-lib/fastify-podlet/commit/d785eda5123c721965cf980a258200ba5360cfbd))
+
 ## [2.2.5](https://github.com/podium-lib/fastify-podlet/compare/v2.2.4...v2.2.5) (2020-10-29)
 
 
