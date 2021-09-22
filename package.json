@@ -55,6 +55,6 @@
     "fastify-formbody": "5.0.0",
     "prettier": "2.2.1",
     "semantic-release": "17.4.7",
-    "tap": "14.11.0"
+    "tap": "15.0.10"
   }
 }
