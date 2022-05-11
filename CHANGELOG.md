@@ -1,3 +1,22 @@
+# [3.0.0-next.2](https://github.com/podium-lib/fastify-podlet/compare/v3.0.0-next.1...v3.0.0-next.2) (2022-05-11)
+
+
+### Bug Fixes
+
+* Run on 0.0.0.0 instead of localhost ([798f439](https://github.com/podium-lib/fastify-podlet/commit/798f4395f382edf6560e873cac10fc4b8999cbfb))
+
+
+### Features
+
+* Convert to ESM. ([befbb8a](https://github.com/podium-lib/fastify-podlet/commit/befbb8aa67e3a3f811b0e0ade65d9872ea4d36a0))
+* Drop support for Fastify version 2 ([8f5a88d](https://github.com/podium-lib/fastify-podlet/commit/8f5a88d15fc5929edadbb1e26c01f6d12655c241))
+
+
+### BREAKING CHANGES
+
+* Drop support for Fastify version 2. Support Fastify version 3 from now on.
+* Module is ESM only.
+
 # [3.0.0-next.1](https://github.com/podium-lib/fastify-podlet/compare/v2.2.40...v3.0.0-next.1) (2022-05-11)
 
 
