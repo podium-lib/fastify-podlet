@@ -1,3 +1,15 @@
+# [3.0.0-next.1](https://github.com/podium-lib/fastify-podlet/compare/v2.2.40...v3.0.0-next.1) (2022-05-11)
+
+
+### chore
+
+* Test on Node.js 16 and 18 only ([7d8e9e1](https://github.com/podium-lib/fastify-podlet/commit/7d8e9e1ec206f9573aac3027c3303fccebf08994))
+
+
+### BREAKING CHANGES
+
+* Test on Node.js 16 and 18 only.
+
 ## [2.2.40](https://github.com/podium-lib/fastify-podlet/compare/v2.2.39...v2.2.40) (2022-03-28)
 
 
