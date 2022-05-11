@@ -1,13 +1,9 @@
-/* eslint-disable no-param-reassign */
-
-'use strict';
-
-const fastifyForm = require('fastify-formbody');
-const { request } = require('@podium/test-utils');
-const fastify = require('fastify');
-const Podlet = require('@podium/podlet');
-const tap = require('tap');
-const FastifyPodlet = require('..');
+import fastifyForm from '@fastify/formbody';
+import { request } from '@podium/test-utils';
+import fastify from 'fastify';
+import Podlet from '@podium/podlet';
+import tap from 'tap';
+import FastifyPodlet from '../lib/podlet-plugin.js';
 
 class Server {
     constructor(options = {}) {
