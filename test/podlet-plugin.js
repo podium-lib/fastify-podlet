@@ -70,7 +70,6 @@ class Server {
                 .then(() => {
                     const address = this.app.server.address();
                     const url = `http://${address.address}:${address.port}`;
-                    console.log(url);
                     resolve(url);
                 })
                 .catch((error) => {
