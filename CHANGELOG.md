@@ -1,3 +1,10 @@
+# [3.0.0-next.3](https://github.com/podium-lib/fastify-podlet/compare/v3.0.0-next.2...v3.0.0-next.3) (2022-10-07)
+
+
+### Features
+
+* Support Fastify 4 and Podium 5 ([8b81878](https://github.com/podium-lib/fastify-podlet/commit/8b818784dbcbdc5be5db9b5140f5b2fa93860b4d))
+
 # [3.0.0-next.2](https://github.com/podium-lib/fastify-podlet/compare/v3.0.0-next.1...v3.0.0-next.2) (2022-05-11)
 
 
