@@ -1,3 +1,10 @@
+## [2.2.43](https://github.com/podium-lib/fastify-podlet/compare/v2.2.42...v2.2.43) (2023-01-09)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @podium/utils to v4.4.39 ([9d4b4fa](https://github.com/podium-lib/fastify-podlet/commit/9d4b4fab8e0e1c1e98f8c9f951ec1df61b754ffe))
+
 ## [2.2.42](https://github.com/podium-lib/fastify-podlet/compare/v2.2.41...v2.2.42) (2022-12-12)
 
 
