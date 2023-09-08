@@ -2,7 +2,6 @@
 
 Fastify plugin for @podium/podlet.
 
-[![Dependencies](https://img.shields.io/david/podium-lib/fastify-podlet.svg)](https://david-dm.org/podium-lib/fastify-podlet)
 [![GitHub Actions status](https://github.com/podium-lib/fastify-podlet/workflows/Run%20Lint%20and%20Tests/badge.svg)](https://github.com/podium-lib/fastify-podlet/actions?query=workflow%3A%22Run+Lint+and+Tests%22)
 [![Known Vulnerabilities](https://snyk.io/test/github/podium-lib/fastify-podlet/badge.svg)](https://snyk.io/test/github/podium-lib/fastify-podlet)
 
