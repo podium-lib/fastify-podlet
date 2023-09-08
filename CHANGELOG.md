@@ -1,3 +1,10 @@
+## [2.2.44](https://github.com/podium-lib/fastify-podlet/compare/v2.2.43...v2.2.44) (2023-09-08)
+
+
+### Bug Fixes
+
+* removing invalid badge with fix to trigger new release which did not happen on f3dc6ff ([7582b71](https://github.com/podium-lib/fastify-podlet/commit/7582b713eeb057d7b87e0a129c81f8c651be3107))
+
 ## [2.2.43](https://github.com/podium-lib/fastify-podlet/compare/v2.2.42...v2.2.43) (2023-01-09)
 
 
