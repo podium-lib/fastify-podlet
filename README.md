@@ -24,7 +24,7 @@ This module require Fastify v2.0.0 or newer.
 Build a simple podlet server:
 
 ```js
-const fastifyPodlet = require('@podium/fastify-podlet');
+const fastifyPodletPlugin = require('@podium/fastify-podlet');
 const fastify = require('fastify');
 const Podlet = require('@podium/podlet');
 
@@ -36,7 +36,8 @@ const podlet = new Podlet({
     name: 'podletContent',
 });
 
-app.register(fastifyPodlet, podlet);
+// Register the plugin, with the podlet as the option
+app.register(fastifyPodletPlugin, podlet);
 
 app.get(podlet.content(), async (request, reply) => {
     if (reply.app.podium.context.locale === 'nb-NO') {
@@ -69,7 +70,7 @@ server `.register()` method together with an instance of the [@podium/podlet]
 class.
 
 ```js
-app.register(FastifyPodlet, podlet);
+app.register(fastifyPodletPlugin, podlet);
 ```
 
 ## Request params
