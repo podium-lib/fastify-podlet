@@ -1,6 +1,6 @@
 'use strict';
 
-const FastifyPodlet = require('../');
+const fastifyPodletPlugin = require('../');
 const fastify = require('fastify');
 const Podlet = require('@podium/podlet');
 
@@ -19,7 +19,7 @@ podlet.defaults({
     locale: 'nb-NO',
 });
 
-app.register(FastifyPodlet, podlet);
+app.register(fastifyPodletPlugin, podlet);
 
 app.get(podlet.content(), async (request, reply) => {
     if (reply.app.podium.context.locale === 'nb-NO') {

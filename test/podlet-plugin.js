@@ -7,7 +7,7 @@ const { request } = require('@podium/test-utils');
 const fastify = require('fastify');
 const Podlet = require('@podium/podlet');
 const tap = require('tap');
-const FastifyPodlet = require('..');
+const fastifyPodletPlugin = require('..');
 
 class Server {
     constructor(options = {}) {
@@ -27,7 +27,7 @@ class Server {
             locale: 'nb-NO',
         });
 
-        this.app.register(FastifyPodlet, podlet);
+        this.app.register(fastifyPodletPlugin, podlet);
         this.app.register(fastifyForm); // Needed to handle non GET requests
 
         this.app.get(podlet.content(), async (req, reply) => {
