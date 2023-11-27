@@ -1,3 +1,17 @@
+# [3.0.0-next.4](https://github.com/podium-lib/fastify-podlet/compare/v3.0.0-next.3...v3.0.0-next.4) (2023-11-27)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @podium/utils to v4.4.37 ([7b98ae7](https://github.com/podium-lib/fastify-podlet/commit/7b98ae7c5b64abf76de9e50cf78cae7cddb1ee61))
+* **deps:** update dependency @podium/utils to v4.4.38 ([34285eb](https://github.com/podium-lib/fastify-podlet/commit/34285ebbc0364f4f026b2310ae3a1fd73113e1da))
+* **deps:** update dependency @podium/utils to v4.4.39 ([9d4b4fa](https://github.com/podium-lib/fastify-podlet/commit/9d4b4fab8e0e1c1e98f8c9f951ec1df61b754ffe))
+* **deps:** update dependency @podium/utils to v4.4.40 ([9ac659d](https://github.com/podium-lib/fastify-podlet/commit/9ac659d7dc3856eccd4bd49d5347a933d3a90c8f))
+* **deps:** update dependency @podium/utils to v4.4.41 ([2d01578](https://github.com/podium-lib/fastify-podlet/commit/2d015789028165c51c3fc5265eed84b457b83a9f))
+* **deps:** update dependency @podium/utils to v4.5.1 ([fea5a44](https://github.com/podium-lib/fastify-podlet/commit/fea5a44b3e34dfc26a8ccaccba2abe6caee69bac))
+* **deps:** update dependency fastify-plugin to v4 ([fe9d1ed](https://github.com/podium-lib/fastify-podlet/commit/fe9d1ed43cea6463598fabded3bd89c645cb2ae3))
+* removing invalid badge with fix to trigger new release which did not happen on f3dc6ff ([7582b71](https://github.com/podium-lib/fastify-podlet/commit/7582b713eeb057d7b87e0a129c81f8c651be3107))
+
 <<<<<<< HEAD
 # [3.0.0-next.3](https://github.com/podium-lib/fastify-podlet/compare/v3.0.0-next.2...v3.0.0-next.3) (2022-10-07)
 
