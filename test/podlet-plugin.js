@@ -1,8 +1,9 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-param-reassign */
 
 'use strict';
 
-const fastifyForm = require('fastify-formbody');
+const fastifyForm = require('@fastify/formbody');
 const { request } = require('@podium/test-utils');
 const fastify = require('fastify');
 const Podlet = require('@podium/podlet');
@@ -73,7 +74,7 @@ class Server {
                 .listen(0)
                 .then(() => {
                     const address = this.app.server.address();
-                    const url = `http://${address.address}:${address.port}`;
+                    const url = `http://localhost:${address.port}`;
                     resolve(url);
                 })
                 .catch((error) => {
