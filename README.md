@@ -2,7 +2,6 @@
 
 Fastify plugin for @podium/podlet.
 
-[![Dependencies](https://img.shields.io/david/podium-lib/fastify-podlet.svg)](https://david-dm.org/podium-lib/fastify-podlet)
 [![GitHub Actions status](https://github.com/podium-lib/fastify-podlet/workflows/Run%20Lint%20and%20Tests/badge.svg)](https://github.com/podium-lib/fastify-podlet/actions?query=workflow%3A%22Run+Lint+and+Tests%22)
 [![Known Vulnerabilities](https://snyk.io/test/github/podium-lib/fastify-podlet/badge.svg)](https://snyk.io/test/github/podium-lib/fastify-podlet)
 
@@ -24,7 +23,7 @@ This module require Fastify v2.0.0 or newer.
 Build a simple podlet server:
 
 ```js
-const fastifyPodlet = require('@podium/fastify-podlet');
+const fastifyPodletPlugin = require('@podium/fastify-podlet');
 const fastify = require('fastify');
 const Podlet = require('@podium/podlet');
 
@@ -36,7 +35,8 @@ const podlet = new Podlet({
     name: 'podletContent',
 });
 
-app.register(fastifyPodlet, podlet);
+// Register the plugin, with the podlet as the option
+app.register(fastifyPodletPlugin, podlet);
 
 app.get(podlet.content(), async (request, reply) => {
     if (reply.app.podium.context.locale === 'nb-NO') {
@@ -69,7 +69,7 @@ server `.register()` method together with an instance of the [@podium/podlet]
 class.
 
 ```js
-app.register(FastifyPodlet, podlet);
+app.register(fastifyPodletPlugin, podlet);
 ```
 
 ## Request params

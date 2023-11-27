@@ -3,7 +3,7 @@ import { request } from '@podium/test-utils';
 import fastify from 'fastify';
 import Podlet from '@podium/podlet';
 import tap from 'tap';
-import FastifyPodlet from '../lib/podlet-plugin.js';
+import fastifyPodletPlugin from '../lib/podlet-plugin.js';
 
 class Server {
     constructor(options = {}) {
@@ -23,7 +23,7 @@ class Server {
             locale: 'nb-NO',
         });
 
-        this.app.register(FastifyPodlet, podlet);
+        this.app.register(fastifyPodletPlugin, podlet);
         this.app.register(fastifyForm); // Needed to handle non GET requests
 
         this.app.get(podlet.content(), async (req, reply) => {
@@ -69,7 +69,7 @@ class Server {
                 .listen({ port: 0, host: '0.0.0.0' })
                 .then(() => {
                     const address = this.app.server.address();
-                    const url = `http://${address.address}:${address.port}`;
+                    const url = `http://localhost:${address.port}`;
                     resolve(url);
                 })
                 .catch((error) => {
