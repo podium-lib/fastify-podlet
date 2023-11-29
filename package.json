@@ -1,6 +1,7 @@
 {
   "name": "@podium/fastify-podlet",
-  "version": "2.2.45",
+  "version": "3.0.0-next.4",
+  "type": "module",
   "description": "Fastify plugin for Podium Podlet",
   "main": "lib/podlet-plugin.js",
   "repository": {
@@ -19,8 +20,8 @@
     "lib"
   ],
   "scripts": {
-    "test": "tap test/*.js",
-    "test:coverage": "tap test/*.js --cov",
+    "test": "tap --disable-coverage --allow-empty-coverage",
+    "test:coverage": "tap",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
@@ -34,10 +35,12 @@
     "podium"
   ],
   "dependencies": {
-    "@podium/utils": "4.5.1",
-    "fastify-plugin": "^4.0.0"
+    "@podium/utils": "5.0.0",
+    "fastify-plugin": "4.5.1"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "7.23.3",
+    "@fastify/formbody": "7.4.0",
     "@podium/podlet": "4.5.0",
     "@podium/test-utils": "2.5.2",
     "@semantic-release/changelog": "6.0.3",
@@ -52,7 +55,6 @@
     "eslint-plugin-import": "2.29.0",
     "eslint-plugin-prettier": "5.0.1",
     "fastify": "4.24.3",
-    "@fastify/formbody": "7.4.0",
     "prettier": "3.1.0",
     "semantic-release": "22.0.8",
     "tap": "18.6.1"

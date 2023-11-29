@@ -1,14 +1,9 @@
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable no-param-reassign */
-
-'use strict';
-
-const fastifyForm = require('@fastify/formbody');
-const { request } = require('@podium/test-utils');
-const fastify = require('fastify');
-const Podlet = require('@podium/podlet');
-const tap = require('tap');
-const fastifyPodletPlugin = require('..');
+import fastifyForm from '@fastify/formbody';
+import { request } from '@podium/test-utils';
+import fastify from 'fastify';
+import Podlet from '@podium/podlet';
+import tap from 'tap';
+import fastifyPodletPlugin from '../lib/podlet-plugin.js';
 
 class Server {
     constructor(options = {}) {
@@ -71,10 +66,10 @@ class Server {
     listen() {
         return new Promise((resolve, reject) => {
             this.app
-                .listen(0)
+                .listen({port: 0, host: '127.0.0.1'})
                 .then(() => {
                     const address = this.app.server.address();
-                    const url = `http://localhost:${address.port}`;
+                    const url = `http://${address.address}:${address.port}`;
                     resolve(url);
                 })
                 .catch((error) => {

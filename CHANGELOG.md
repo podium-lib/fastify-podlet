@@ -36,6 +36,58 @@
 
 * **deps:** update dependency @podium/utils to v4.4.37 ([7b98ae7](https://github.com/podium-lib/fastify-podlet/commit/7b98ae7c5b64abf76de9e50cf78cae7cddb1ee61))
 
+# [3.0.0-next.4](https://github.com/podium-lib/fastify-podlet/compare/v3.0.0-next.3...v3.0.0-next.4) (2023-11-27)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @podium/utils to v4.4.37 ([7b98ae7](https://github.com/podium-lib/fastify-podlet/commit/7b98ae7c5b64abf76de9e50cf78cae7cddb1ee61))
+* **deps:** update dependency @podium/utils to v4.4.38 ([34285eb](https://github.com/podium-lib/fastify-podlet/commit/34285ebbc0364f4f026b2310ae3a1fd73113e1da))
+* **deps:** update dependency @podium/utils to v4.4.39 ([9d4b4fa](https://github.com/podium-lib/fastify-podlet/commit/9d4b4fab8e0e1c1e98f8c9f951ec1df61b754ffe))
+* **deps:** update dependency @podium/utils to v4.4.40 ([9ac659d](https://github.com/podium-lib/fastify-podlet/commit/9ac659d7dc3856eccd4bd49d5347a933d3a90c8f))
+* **deps:** update dependency @podium/utils to v4.4.41 ([2d01578](https://github.com/podium-lib/fastify-podlet/commit/2d015789028165c51c3fc5265eed84b457b83a9f))
+* **deps:** update dependency @podium/utils to v4.5.1 ([fea5a44](https://github.com/podium-lib/fastify-podlet/commit/fea5a44b3e34dfc26a8ccaccba2abe6caee69bac))
+* **deps:** update dependency fastify-plugin to v4 ([fe9d1ed](https://github.com/podium-lib/fastify-podlet/commit/fe9d1ed43cea6463598fabded3bd89c645cb2ae3))
+* removing invalid badge with fix to trigger new release which did not happen on f3dc6ff ([7582b71](https://github.com/podium-lib/fastify-podlet/commit/7582b713eeb057d7b87e0a129c81f8c651be3107))
+
+# [3.0.0-next.3](https://github.com/podium-lib/fastify-podlet/compare/v3.0.0-next.2...v3.0.0-next.3) (2022-10-07)
+
+
+### Features
+
+* Support Fastify 4 and Podium 5 ([8b81878](https://github.com/podium-lib/fastify-podlet/commit/8b818784dbcbdc5be5db9b5140f5b2fa93860b4d))
+
+# [3.0.0-next.2](https://github.com/podium-lib/fastify-podlet/compare/v3.0.0-next.1...v3.0.0-next.2) (2022-05-11)
+
+
+### Bug Fixes
+
+* Run on 0.0.0.0 instead of localhost ([798f439](https://github.com/podium-lib/fastify-podlet/commit/798f4395f382edf6560e873cac10fc4b8999cbfb))
+
+
+### Features
+
+* Convert to ESM. ([befbb8a](https://github.com/podium-lib/fastify-podlet/commit/befbb8aa67e3a3f811b0e0ade65d9872ea4d36a0))
+* Drop support for Fastify version 2 ([8f5a88d](https://github.com/podium-lib/fastify-podlet/commit/8f5a88d15fc5929edadbb1e26c01f6d12655c241))
+
+
+### BREAKING CHANGES
+
+* Drop support for Fastify version 2. Support Fastify version 3 from now on.
+* Module is ESM only.
+
+# [3.0.0-next.1](https://github.com/podium-lib/fastify-podlet/compare/v2.2.40...v3.0.0-next.1) (2022-05-11)
+
+
+### chore
+
+* Test on Node.js 16 and 18 only ([7d8e9e1](https://github.com/podium-lib/fastify-podlet/commit/7d8e9e1ec206f9573aac3027c3303fccebf08994))
+
+
+### BREAKING CHANGES
+
+* Test on Node.js 16 and 18 only.
+
 ## [2.2.40](https://github.com/podium-lib/fastify-podlet/compare/v2.2.39...v2.2.40) (2022-03-28)
 
 
