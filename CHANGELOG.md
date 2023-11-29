@@ -1,3 +1,29 @@
+# [3.0.0](https://github.com/podium-lib/fastify-podlet/compare/v2.2.45...v3.0.0) (2023-11-29)
+
+
+### Bug Fixes
+
+* Run on 0.0.0.0 instead of localhost ([798f439](https://github.com/podium-lib/fastify-podlet/commit/798f4395f382edf6560e873cac10fc4b8999cbfb))
+
+
+### chore
+
+* Test on Node.js 16 and 18 only ([7d8e9e1](https://github.com/podium-lib/fastify-podlet/commit/7d8e9e1ec206f9573aac3027c3303fccebf08994))
+
+
+### Features
+
+* Convert to ESM. ([befbb8a](https://github.com/podium-lib/fastify-podlet/commit/befbb8aa67e3a3f811b0e0ade65d9872ea4d36a0))
+* Drop support for Fastify version 2 ([8f5a88d](https://github.com/podium-lib/fastify-podlet/commit/8f5a88d15fc5929edadbb1e26c01f6d12655c241))
+* Support Fastify 4 and Podium 5 ([8b81878](https://github.com/podium-lib/fastify-podlet/commit/8b818784dbcbdc5be5db9b5140f5b2fa93860b4d))
+
+
+### BREAKING CHANGES
+
+* Drop support for Fastify version 2. Support Fastify version 3 from now on.
+* Module is ESM only.
+* Test on Node.js 16 and 18 only.
+
 ## [2.2.45](https://github.com/podium-lib/fastify-podlet/compare/v2.2.44...v2.2.45) (2023-11-27)
 
 
