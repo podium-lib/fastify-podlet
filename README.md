@@ -23,9 +23,9 @@ This module require Fastify v2.0.0 or newer.
 Build a simple podlet server:
 
 ```js
-const fastifyPodletPlugin = require('@podium/fastify-podlet');
-const fastify = require('fastify');
-const Podlet = require('@podium/podlet');
+import fastifyPodletPlugin from '@podium/fastify-podlet';
+import fastify from 'fastify';
+import Podlet from '@podium/podlet';
 
 const app = fastify();
 
