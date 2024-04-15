@@ -1,3 +1,10 @@
+## [3.0.3](https://github.com/podium-lib/fastify-podlet/compare/v3.0.2...v3.0.3) (2024-04-15)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @podium/utils to v5.0.3 ([f4eed32](https://github.com/podium-lib/fastify-podlet/commit/f4eed32ae41a77554d6dbf524597ec72ae0247c1))
+
 ## [3.0.2](https://github.com/podium-lib/fastify-podlet/compare/v3.0.1...v3.0.2) (2024-02-05)
 
 
