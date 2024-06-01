@@ -39,7 +39,7 @@
     "fastify-plugin": "4.5.1"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "7.24.5",
+    "@babel/eslint-parser": "7.24.6",
     "@fastify/formbody": "7.4.0",
     "@podium/podlet": "5.0.6",
     "@podium/test-utils": "2.5.2",
