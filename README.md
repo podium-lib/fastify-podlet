@@ -51,13 +51,13 @@ app.get(podlet.manifest(), async (request, reply) => {
 });
 
 const start = async () => {
-  try {
-    await app.listen(7100)
-    app.log.info(`server listening on ${app.server.address().port}`)
-  } catch (err) {
-    app.log.error(err)
-    process.exit(1)
-  }
+    try {
+        await app.listen(7100);
+        app.log.info(`server listening on ${app.server.address().port}`);
+    } catch (err) {
+        app.log.error(err);
+        process.exit(1);
+    }
 };
 start();
 ```
@@ -119,7 +119,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-[development mode]: https://github.com/podium-lib/podlet/blob/master/README.md#development-mode 'Development mode'
+[development mode]: https://github.com/podium-lib/podlet/blob/main/README.md#development-mode 'Development mode'
 [@podium/context locale parser]: https://github.com/podium-lib/context#locale-1 '@podium/context locale parser'
 [Podium documentation]: https://podium-lib.io/ 'Podium documentation'
 [@podium/context]: https://github.com/podium-lib/context '@podium/context'
