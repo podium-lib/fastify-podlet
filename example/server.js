@@ -4,7 +4,7 @@ const fastifyPodletPlugin = require('../');
 const fastify = require('fastify');
 const Podlet = require('@podium/podlet');
 
-const app = fastify({ logger: true })
+const app = fastify({ logger: true });
 
 const podlet = new Podlet({
     pathname: '/',
@@ -38,7 +38,7 @@ app.get(podlet.manifest(), async (request, reply) => {
 });
 
 app.get('/public', async (request, reply) => {
-  reply.send({ say: 'Hello world' });
+    reply.send({ say: 'Hello world' });
 });
 
 // Test URL: http://localhost:7100/podium-resource/podletContent/localApi
@@ -48,12 +48,12 @@ podlet.proxy({ target: 'https://api.ipify.org', name: 'remoteApi' });
 
 // Run the server!
 const start = async () => {
-  try {
-    await app.listen(7100)
-    app.log.info(`server listening on ${app.server.address().port}`)
-  } catch (err) {
-    app.log.error(err)
-    process.exit(1)
-  }
-}
-start()
+    try {
+        await app.listen(7100);
+        app.log.info(`server listening on ${app.server.address().port}`);
+    } catch (err) {
+        app.log.error(err);
+        process.exit(1);
+    }
+};
+start();
