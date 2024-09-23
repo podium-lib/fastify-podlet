@@ -6,3 +6,5 @@ node_modules/
 *.log
 .vscode
 .tap
+*.d.ts
+!podium.d.ts

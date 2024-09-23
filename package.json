@@ -4,6 +4,7 @@
   "type": "module",
   "description": "Fastify plugin for Podium Podlet",
   "main": "lib/podlet-plugin.js",
+  "types": "types/podlet-plugin.d.ts",
   "repository": {
     "type": "git",
     "url": "git@github.com:podium-lib/fastify-podlet.git"
@@ -17,13 +18,18 @@
     "CHANGELOG.md",
     "README.md",
     "LICENSE",
-    "lib"
+    "lib",
+    "types"
   ],
   "scripts": {
     "test": "tap --disable-coverage --allow-empty-coverage",
     "test:coverage": "tap",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "types": "run-s types:tsc types:fixup",
+    "types:tsc": "tsc",
+    "types:test": "tsc --project tsconfig.test.json",
+    "types:fixup": "node ./fixup.js"
   },
   "author": "Trygve Lie",
   "license": "MIT",
@@ -40,7 +46,7 @@
   },
   "devDependencies": {
     "@fastify/formbody": "7.4.0",
-    "@podium/podlet": "5.1.12",
+    "@podium/podlet": "5.1.17",
     "@podium/test-utils": "2.5.2",
     "@semantic-release/changelog": "6.0.3",
     "@semantic-release/commit-analyzer": "11.1.0",
@@ -53,8 +59,10 @@
     "eslint-plugin-prettier": "5.2.1",
     "fastify": "4.28.1",
     "globals": "15.9.0",
+    "npm-run-all2": "6.2.3",
     "prettier": "3.3.3",
     "semantic-release": "23.1.1",
-    "tap": "18.8.0"
+    "tap": "18.8.0",
+    "typescript": "5.6.2"
   }
 }

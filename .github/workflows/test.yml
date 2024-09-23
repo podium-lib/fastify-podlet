@@ -32,3 +32,6 @@ jobs:
 
       - name: npm test
         run: npm test
+
+      - name: npm types
+        run: npm run types
