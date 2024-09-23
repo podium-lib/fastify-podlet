@@ -1,3 +1,10 @@
+## [3.0.11](https://github.com/podium-lib/fastify-podlet/compare/v3.0.10...v3.0.11) (2024-09-23)
+
+
+### Bug Fixes
+
+* return fastifyreply so async/await works as expected ([#287](https://github.com/podium-lib/fastify-podlet/issues/287)) ([2746766](https://github.com/podium-lib/fastify-podlet/commit/27467666af54c05aed476397b61a20cb0a3ecea0))
+
 ## [3.0.10](https://github.com/podium-lib/fastify-podlet/compare/v3.0.9...v3.0.10) (2024-09-23)
 
 
