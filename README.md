@@ -11,7 +11,7 @@ please see the [Podium documentation].
 ## Installation
 
 ```bash
-$ npm install @podium/fastify-podlet
+npm install @podium/fastify-podlet
 ```
 
 ## Requirements
@@ -40,16 +40,13 @@ app.register(fastifyPodletPlugin, podlet);
 
 app.get(podlet.content(), async (request, reply) => {
     if (reply.app.podium.context.locale === 'nb-NO') {
-        reply.podiumSend('<h2>Hei verden</h2>');
-        return;
+        return reply.podiumSend('<h2>Hei verden</h2>');
     }
-    reply.podiumSend('<h2>Hello world</h2>');
-    await reply;
+    return reply.podiumSend('<h2>Hello world</h2>');
 });
 
 app.get(podlet.manifest(), async (request, reply) => {
-    reply.send(podlet);
-    await reply;
+    return reply.send(podlet);
 });
 
 const start = async () => {
@@ -85,11 +82,9 @@ accessible inside a request handelers.
 ```js
 app.get(podlet.content(), async (request, reply) => {
     if (reply.app.podium.context.locale === 'nb-NO') {
-        reply.podiumSend('<h2>Hei verden</h2>');
-        return;
+        return reply.podiumSend('<h2>Hei verden</h2>');
     }
-    reply.podiumSend('<h2>Hello world</h2>');
-    await reply;
+    return reply.podiumSend('<h2>Hello world</h2>');
 });
 ```
 

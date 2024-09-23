@@ -28,35 +28,33 @@ class Server {
 
         this.app.get(podlet.content(), async (req, reply) => {
             if (reply.app.podium.context.locale === 'nb-NO') {
-                reply.podiumSend('nb-NO');
-                return;
+                return reply.podiumSend('nb-NO');
             }
             if (reply.app.podium.context.locale === 'en-NZ') {
-                reply.podiumSend('en-NZ');
-                return;
+                return reply.podiumSend('en-NZ');
             }
-            reply.podiumSend('en-US');
+            return reply.podiumSend('en-US');
         });
 
         this.app.get(podlet.fallback(), async (req, reply) => {
-            reply.podiumSend('fallback');
+            return reply.podiumSend('fallback');
         });
 
         this.app.get(podlet.manifest(), async (req, reply) => {
-            reply.send(podlet);
+            return reply.send(podlet);
         });
 
         // Dummy endpoints for proxying
         this.app.get('/public', async (req, reply) => {
-            reply.send('GET proxy target');
+            return reply.send('GET proxy target');
         });
 
         this.app.post('/public', async (req, reply) => {
-            reply.send('POST proxy target');
+            return reply.send('POST proxy target');
         });
 
         this.app.put('/public', async (req, reply) => {
-            reply.send('PUT proxy target');
+            return reply.send('PUT proxy target');
         });
 
         // Proxy to the dummy endpoints
