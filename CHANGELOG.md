@@ -1,3 +1,10 @@
+## [3.0.10](https://github.com/podium-lib/fastify-podlet/compare/v3.0.9...v3.0.10) (2024-09-23)
+
+
+### Bug Fixes
+
+* include type definitions ([#286](https://github.com/podium-lib/fastify-podlet/issues/286)) ([3acf4da](https://github.com/podium-lib/fastify-podlet/commit/3acf4daf88a0d5b8fa01f792e1bd045b1c038b60))
+
 ## [3.0.9](https://github.com/podium-lib/fastify-podlet/compare/v3.0.8...v3.0.9) (2024-09-23)
 
 
