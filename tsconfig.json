@@ -7,7 +7,7 @@
     "checkJs": true,
     "allowJs": true,
     "moduleResolution": "nodenext",
-    "noEmit": true,
+    "emitDeclarationOnly": true,
     "declaration": true,
     "allowSyntheticDefaultImports": true,
     "outDir": "types"
