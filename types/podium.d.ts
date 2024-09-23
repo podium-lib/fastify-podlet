@@ -1,9 +1,7 @@
 import { HttpIncoming } from '@podium/utils';
 
 declare module 'fastify' {
-    
-
-    interface PodiumHttpIncomingParameters { 
+    interface PodiumHttpIncomingParameters {
         [key: string]: unknown;
     }
 
@@ -13,30 +11,31 @@ declare module 'fastify' {
         [key: string]: unknown;
     }
 
-    interface PodiumHttpIncomingViewParameters { 
+    interface PodiumHttpIncomingViewParameters {
         [key: string]: unknown;
     }
 
     interface PodiumLocals {
-        podium: HttpIncoming<PodiumHttpIncomingParameters, PodiumHttpIncomingContext, PodiumHttpIncomingViewParameters>;
+        podium: HttpIncoming<
+            PodiumHttpIncomingParameters,
+            PodiumHttpIncomingContext,
+            PodiumHttpIncomingViewParameters
+        >;
     }
 
     interface FastifyReply {
         app: PodiumLocals;
 
         /**
-         * Calls the send / write method on the `http.ServerResponse` object.
-         *
          * When in development mode this method will wrap the provided fragment in a
          * default HTML document before dispatching. When not in development mode, this
          * method will just dispatch the fragment.
          *
          * @example
          * app.get(podlet.content(), async (req, reply) => {
-         *   reply.podiumSend('<h1>Hello World</h1>');
-         *   await reply;
+         *   return reply.podiumSend('<h1>Hello World</h1>');
          * });
          */
-        podiumSend(fragment: string, ...args: unknown[]): Response;
+        podiumSend(fragment: string, ...args: unknown[]): FastifyReply;
     }
 }
