@@ -32,7 +32,7 @@ const app = fastify();
 const podlet = new Podlet({
     pathname: '/',
     version: '2.0.0',
-    name: 'podletContent',
+    name: 'podlet-content',
 });
 
 // Register the plugin, with the podlet as the option
@@ -44,21 +44,24 @@ app.get(podlet.content(), async (request, reply) => {
         return;
     }
     reply.podiumSend('<h2>Hello world</h2>');
+    await reply;
 });
 
 app.get(podlet.manifest(), async (request, reply) => {
     reply.send(podlet);
+    await reply;
 });
 
 const start = async () => {
     try {
-        await app.listen(7100);
+        await app.listen({ port: 7100 });
         app.log.info(`server listening on ${app.server.address().port}`);
     } catch (err) {
         app.log.error(err);
         process.exit(1);
     }
 };
+
 start();
 ```
 
@@ -86,6 +89,7 @@ app.get(podlet.content(), async (request, reply) => {
         return;
     }
     reply.podiumSend('<h2>Hello world</h2>');
+    await reply;
 });
 ```
 
