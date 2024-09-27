@@ -26,7 +26,7 @@
     "test:coverage": "tap",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "types": "run-s types:tsc types:fixup",
+    "types": "run-s types:tsc types:fixup types:test",
     "types:tsc": "tsc",
     "types:test": "tsc --project tsconfig.test.json",
     "types:fixup": "node ./fixup.js"
@@ -49,6 +49,7 @@
     "@podium/eslint-config": "1.0.0",
     "@podium/podlet": "5.1.17",
     "@podium/test-utils": "2.5.2",
+    "@podium/typescript-config": "1.0.0",
     "@semantic-release/changelog": "6.0.3",
     "@semantic-release/git": "10.0.1",
     "eslint": "9.9.1",

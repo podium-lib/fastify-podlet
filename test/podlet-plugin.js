@@ -27,16 +27,22 @@ class Server {
         this.app.register(fastifyForm); // Needed to handle non GET requests
 
         this.app.get(podlet.content(), async (req, reply) => {
+            // @ts-ignore
             if (reply.app.podium.context.locale === 'nb-NO') {
+                // @ts-ignore
                 return reply.podiumSend('nb-NO');
             }
+            // @ts-ignore
             if (reply.app.podium.context.locale === 'en-NZ') {
+                // @ts-ignore
                 return reply.podiumSend('en-NZ');
             }
+            // @ts-ignore
             return reply.podiumSend('en-US');
         });
 
         this.app.get(podlet.fallback(), async (req, reply) => {
+            // @ts-ignore
             return reply.podiumSend('fallback');
         });
 
@@ -67,6 +73,7 @@ class Server {
                 .listen({ port: 0, host: '127.0.0.1' })
                 .then(() => {
                     const address = this.app.server.address();
+                    // @ts-ignore
                     const url = `http://${address.address}:${address.port}`;
                     resolve(url);
                 })
