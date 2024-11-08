@@ -1,3 +1,15 @@
+# [4.0.0](https://github.com/podium-lib/fastify-podlet/compare/v3.0.11...v4.0.0) (2024-11-08)
+
+
+### Bug Fixes
+
+* upgrade fastify-plugin to v5 ([#292](https://github.com/podium-lib/fastify-podlet/issues/292)) ([ed972de](https://github.com/podium-lib/fastify-podlet/commit/ed972dedacf9fc5b7142ff83acdc08df65db73c4))
+
+
+### BREAKING CHANGES
+
+* requires fastify 5.x
+
 ## [3.0.11](https://github.com/podium-lib/fastify-podlet/compare/v3.0.10...v3.0.11) (2024-09-23)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@podium/fastify-podlet",
-  "version": "3.0.11",
+  "version": "4.0.0",
   "type": "module",
   "description": "Fastify plugin for Podium Podlet",
   "main": "lib/podlet-plugin.js",
