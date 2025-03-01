@@ -45,7 +45,7 @@
     "fastify-plugin": "5.0.1"
   },
   "devDependencies": {
-    "@fastify/formbody": "8.0.1",
+    "@fastify/formbody": "8.0.2",
     "@podium/eslint-config": "1.0.5",
     "@podium/podlet": "5.2.4",
     "@podium/semantic-release-config": "2.0.0",
