@@ -1,3 +1,10 @@
+## [4.0.2](https://github.com/podium-lib/fastify-podlet/compare/v4.0.1...v4.0.2) (2025-06-24)
+
+
+### Bug Fixes
+
+* **deps:** update podium/utils ([0c232da](https://github.com/podium-lib/fastify-podlet/commit/0c232da0ec989ffafc04bf625ff879a36d6066e6))
+
 ## [4.0.1](https://github.com/podium-lib/fastify-podlet/compare/v4.0.0...v4.0.1) (2024-11-18)
 
 
