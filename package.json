@@ -52,7 +52,7 @@
     "@podium/test-utils": "3.0.23",
     "@podium/typescript-config": "1.0.0",
     "eslint": "9.39.1",
-    "fastify": "5.6.2",
+    "fastify": "5.7.2",
     "npm-run-all2": "8.0.4",
     "prettier": "3.7.4",
     "semantic-release": "25.0.2",
