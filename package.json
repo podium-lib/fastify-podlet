@@ -49,7 +49,7 @@
     "@podium/eslint-config": "1.0.19",
     "@podium/podlet": "5.3.4",
     "@podium/semantic-release-config": "3.0.0",
-    "@podium/test-utils": "3.0.23",
+    "@podium/test-utils": "3.0.24",
     "@podium/typescript-config": "1.0.0",
     "eslint": "9.39.1",
     "fastify": "5.7.2",
