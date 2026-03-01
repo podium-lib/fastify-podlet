@@ -47,7 +47,7 @@
   "devDependencies": {
     "@fastify/formbody": "8.0.2",
     "@podium/eslint-config": "1.0.19",
-    "@podium/podlet": "5.3.3",
+    "@podium/podlet": "5.3.4",
     "@podium/semantic-release-config": "3.0.0",
     "@podium/test-utils": "3.0.23",
     "@podium/typescript-config": "1.0.0",
