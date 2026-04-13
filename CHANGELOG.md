@@ -1,3 +1,10 @@
+## [4.0.4](https://github.com/podium-lib/fastify-podlet/compare/v4.0.3...v4.0.4) (2026-04-13)
+
+
+### Bug Fixes
+
+* update podium dependencies ([514e815](https://github.com/podium-lib/fastify-podlet/commit/514e8157a484cfe98e1d650c11112d8b30586507))
+
 ## [4.0.3](https://github.com/podium-lib/fastify-podlet/compare/v4.0.2...v4.0.3) (2025-12-12)
 
 
