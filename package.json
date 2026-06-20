@@ -7,7 +7,7 @@
   "types": "types/podlet-plugin.d.ts",
   "repository": {
     "type": "git",
-    "url": "git@github.com:podium-lib/fastify-podlet.git"
+    "url": "git+https://github.com/podium-lib/fastify-podlet.git"
   },
   "bugs": {
     "url": "https://github.com/podium-lib/issues"
